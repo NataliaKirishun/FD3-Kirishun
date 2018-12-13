@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Голосование</title>
+</head> 
+<body> 
+  <div id="container"></div> 
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+      
+  <script src="IShop.js"></script>
+  <link rel="stylesheet" type="text/css" href="IShop.css" />
+
+  <script>
+
+    var titleText='Как вы относитесь к программированию?';
+    var phonesArray=[
+      {name:'Apple iPhone X',price:2149,count:10, url:'images/Apple iPhone X.jpeg'},
+      {name:'Apple iPhone 7',price:1215,count:5, url:'images/Apple iPhone 7.jpeg'},
+      {name:'Honor 8X',price:549,count:6, url:'images/Honor 8X.jpeg'},
+      {name:'Huawei Mate 20 Lite',price:695,count:3, url:'images/Huawei Mate 20 Lite.jpeg'},
+      {name:'Huawei P20 Lite',price:570,count:7, url:'images/Huawei P20 Lite.jpeg'},
+      {name:'Samsung Galaxy A7',price:744,count:6, url:'images/Samsung Galaxy A7.jpeg'},
+      {name:'Samsung Galaxy S8',price:1098,count:4, url:'images/Samsung Galaxy S8.jpeg'},
+      {name:'Xiaomi Mi A2 Lite',price:467,count:3, url:'images/Xiaomi Mi A2 Lite.jpeg'},
+      {name:'Xiaomi Pocophone F1',price:775,count:6, url:'images/Xiaomi Pocophone F1.jpeg'},
+      {name:'Xiaomi Redmi Note 6Pro',price:539,count:7, url:'Xiaomi Redmi Note 6Pro.jpeg'},
+      {name:'Xiaomi Redmi 6A',price:189,count:6, url:'Xiaomi Redmi 6A.jpeg'}
+    ];
+
+    ReactDOM.render(
+      React.createElement(IShop,{titleText:titleText,items:phonesArray}),
+      document.getElementById('container') 
+    );
+
+  </script>
+
+</body> 
+</html>
