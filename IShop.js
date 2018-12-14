@@ -3,8 +3,7 @@
   displayName: 'IShop',
 
   propTypes: {
-    question: React.PropTypes.string.isRequired,
-
+    titleText: React.PropTypes.string.isRequired,
     items:React.PropTypes.arrayOf(
       React.PropTypes.shape({
         name: React.PropTypes.string.isRequired,
@@ -13,20 +12,18 @@
         url: React.PropTypes.string.isRequired
       })
     )
-
   },
 
   render: function() {
 
-    var answersCode=this.props.answers.map( v =>
-        React.DOM.div({key:v.code,className:'Answer'},
-          React.DOM.span({className:'Count'},v.count),
-          React.DOM.span({className:'Text'},v.text),
-        )
+    var items=this.props.items.map( model =>
+        React.createElement(Item, {item:model, key:model.id} )
       );
-    return React.DOM.div( {className:'VotesBlock'}, 
-      React.DOM.div( {className:'Question'}, this.props.question ),
-      React.DOM.div( {className:'Answers'}, answersCode ),
+
+
+    return React.DOM.div( {className:'IShop'},
+      React.DOM.div( {className:'Title'}, this.props.titleText ),
+      React.DOM.div( {className:'Items'}, items )
     );
   },
 
