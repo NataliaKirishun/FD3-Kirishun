@@ -1,0 +1,18 @@
+.Title {
+    font-family: Arial, serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.Items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Item {
+    flex: 0 0 20%;
+    border: 1px solid black;
+
+
+}
