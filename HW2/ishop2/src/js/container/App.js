@@ -1,12 +1,16 @@
 import React, {Component, Fragment} from "react";
 
 import ShopsTable from "../presentational/ShopsTable";
+import Backdrop from "../presentational/Backdrop";
+import DeleteModal from "../presentational/DeleteModal";
 
 
 class App extends Component {
 
     state = {
         selectedItem: null,
+        idItemToDelete: null,
+        deleteModalIsShown: false,
         phonesArray: [
             {name: 'Apple iPhone X', price: 2149, count: 10, url: 'src/images/Apple iPhone X 64GB.jpeg', id: 1},
             {name: 'Apple iPhone 7', price: 1215, count: 5, url: 'src/images/Apple iPhone 7.jpeg', id: 2},
@@ -36,23 +40,56 @@ class App extends Component {
         ]
     };
 
-    handlerClick = (evt, id) => {
-        evt.target.className === "DeleteButton" ?
+    showModal = (id) => {
+        this.setState({
+            deleteModalIsShown: !this.state.deleteModalIsShown,
+            idItemToDelete: id
+        })
+    };
+
+    deleteItem = (evt, id) => {
+        evt.target.className === "AgreeBtn" ?
             this.setState({
+                deleteModalIsShown: !this.state.deleteModalIsShown,
                 phonesArray: this.state.phonesArray.filter(item => item.id !== id)
             }) :
             this.setState({
-                selectedItem: id
-            });
+                deleteModalIsShown: !this.state.deleteModalIsShown
+            })
+    };
+
+    handlerClick = (evt, id) => {
+        evt.target.className === "DeleteButton" ?
+            this.showModal(id)
+            :
+            id !== this.state.selectedItem ?
+                this.setState({
+                    selectedItem: id
+                }) :
+                this.setState({
+                    selectedItem: null
+                })
     };
 
     render() {
         return (
-            <ShopsTable
-                listOfGoods={this.state.phonesArray}
-                handlerClick={this.handlerClick}
-                currentItem={this.state.selectedItem}
-            />
+            <Fragment>
+                <ShopsTable
+                    listOfGoods={this.state.phonesArray}
+                    handlerClick={this.handlerClick}
+                    currentItem={this.state.selectedItem}
+                />
+                {this.state.deleteModalIsShown ?
+                    <Fragment>
+                        <DeleteModal
+                            idItemToDelete={this.state.idItemToDelete}
+                            deleteItem={this.deleteItem}
+                        />
+                        <Backdrop/>
+                    </Fragment> :
+                    null
+                }
+            </Fragment>
         )
     }
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "../../styles/ShopItem.less";
+
 const ShopsItem = ({item, handlerClick, currentItem}) => {
     let currentClass = currentItem === item.id ? 'Current' : 'Item';
     return(

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-
 import ShopsItem from "../presentational/ShopsItem";
+
+import "../../styles/ShopTable.less";
 
 const ShopsTable = ({listOfGoods, handlerClick, currentItem}) => (
     <ul className="ListItem">
