@@ -11,7 +11,6 @@ class App extends PureComponent {
     state = {
         mobileCompanies: [],
         mobileCompaniesClients: [],
-        currentMobileCompany:[],
         currentCompanyIndex: 0,
         filterBtnArray : ['Все','Активные','Заблокированные'],
         currentFilterState:0
@@ -67,7 +66,11 @@ class App extends PureComponent {
                     filterBtnArray = { this.state.filterBtnArray }
                     currentFilterState = { this.state.currentFilterState }
                 />
-                <Table currentMobileCompany={this.state.currentMobileCompany}/>
+                <Table
+                    mobileCompanies={this.state.mobileCompanies}
+                    currentCompanyIndex={this.state.currentCompanyIndex}
+                    currentFilterState={this.state.currentFilterState}
+                />
             </Fragment>
         )
     }
