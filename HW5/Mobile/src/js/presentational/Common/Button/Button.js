@@ -23,6 +23,10 @@ const Button = styled.button`
         :last-child {
             border-radius:0 10px 0 0;
         }   
+     `}
+     
+      ${props => props.edit && css`
+        
      `}    
         
 `;

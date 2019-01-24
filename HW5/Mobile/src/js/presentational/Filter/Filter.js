@@ -26,6 +26,7 @@ class Filter extends PureComponent {
     }
 
     render() {
+        console.log('render Filter');
         return (
             <FilterWrapper>
                 <BtnGroupWrapper>
