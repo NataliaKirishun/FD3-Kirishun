@@ -50,8 +50,7 @@ class App extends PureComponent {
         companiesEvents.removeListener('addClient', this.addClient);
     };
 
-    addClient = (id) => {
-        console.log(id);
+    addClient = (id) => {        
         let mobileClients = [...this.state.mobileCompaniesClients];
         let currentCompany = [...mobileClients[this.state.currentCompanyIndex]];
         let newClient = {

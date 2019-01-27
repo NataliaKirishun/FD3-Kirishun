@@ -6,14 +6,14 @@ class Br2jsx extends Component {
         let array = this.props.text.split(/<br *\/?>/);
         let newArr = [];
         for (let i = 0; i < array.length; i++) {
-            newArr.push(array[i], <br/>);
+            i === array.length-1 ? newArr.push(array[i]) : newArr.push(array[i], <br key={i}/>);
         }
         return newArr;
     };
 
     render() {
         return (
-            <div class="Wrapper">
+            <div className="Wrapper">
                 {this.renderText()}
             </div>
         )
