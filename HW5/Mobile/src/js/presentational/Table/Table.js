@@ -3,69 +3,39 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Variables from "../Common/Variables/Variables";
 import Button from "../Common/Button/Button";
+import Client from "../Client/Client"
 
 import {companiesEvents} from '../../events';
 
 class Table extends PureComponent {
 
-    state = {
+   state = {
         idClientToEdit: null
     };
 
-    newNameRef = null;
-    newSurnameRef = null;
-    newPatronymic = null;
-    newBalance = null;
-
-    setNewName = (ref) => {
-        this.newNameRef = ref;
+    componentDidMount() {
+        companiesEvents.addListener('makeClientEditable', this.setNewIdClientToEdit);
     };
 
-    setNewSurname = (ref) => {
-        this.newSurnameRef = ref;
+    componentWillUnmount = () => {
+        companiesEvents.removeListener('makeClientEditable', this.setNewIdClientToEdit);
     };
 
-    setNewPatronymic = (ref) => {
-        this.newPatronymic = ref;
+    setNewIdClientToEdit=(id)=>{
+        this.setState({ idClientToEdit: id});
     };
 
-    setNewBalance = (ref) => {
-        this.newBalance = ref;
-    };
-
-    handlerClick = (e, id) => {
-        let eventType = e.target.getAttribute('data-edit-type');
-        switch (eventType) {
-            case 'edit' :
-                this.setState({idClientToEdit: id});
-                break;
-            case 'save' :
-                this.saveNewClientsData();
-                break;
-            case 'delete' :
-                companiesEvents.emit('deleteClient', id);
-                break;
-            case 'add' :
-                this.addNewClient();
-        }
+    handlerClick = (e) => {
+      this.addNewClient();
     };
 
     addNewClient = () => {
         let randomId=Math.floor(Math.random()*1000);
         companiesEvents.emit('addClient', randomId);
-        this.state.idClientToEdit=randomId;
+        this.setState({ idClientToEdit: randomId});
     };
 
-    saveNewClientsData = () => {
-        companiesEvents.emit('editClient', {
-            newName: this.newNameRef.value,
-            newSurname: this.newSurnameRef.value,
-            newPatronymic: this.newPatronymic.value,
-            newBalance: this.newBalance.value,
-            id: this.state.idClientToEdit
-        });
-        this.setState({idClientToEdit: null});
-    };
+
 
     renderTHead = () => {
         let headerArray = ['Фамилия', 'Имя', 'Отчество', 'Баланс', 'Статус', 'Редактировать', 'Удалить'];
@@ -76,72 +46,13 @@ class Table extends PureComponent {
     };
 
     renderTBody = () => {
-        console.log(this.props.filteredCompany);
-        return this.props.filteredCompany.map((element) => {
-                let status = element.balance > 0 ? 'active' : 'blocked';
-                return (
-                    <TrWrapper key={element.id} onClick={(e) => {
-                        this.handlerClick(e, element.id)
-                    }}>
-                        {this.state.idClientToEdit !== element.id ?
-                            (
-                                <Fragment>
-                                    <TD>{element.name}</TD>
-                                    <TD>{element.surname}</TD>
-                                    <TD>{element.patronymic}</TD>
-                                    <TD>{element.balance}</TD>
-                                </Fragment>
-                            ) : (
-                                <Fragment>
-                                    <TD>
-                                        <input
-                                            type="text"
-                                            defaultValue={element.name}
-                                            ref={this.setNewName}
-                                        />
-                                    </TD>
-                                    <TD>
-                                        <input
-                                            type="text"
-                                            defaultValue={element.surname}
-                                            ref={this.setNewSurname}
-                                        />
-                                    </TD>
-                                    <TD>
-                                        <input
-                                            type="text"
-                                            defaultValue={element.patronymic}
-                                            ref={this.setNewPatronymic}
-                                        />
-                                    </TD>
-                                    <TD>
-                                        <input
-                                            type="text"
-                                            defaultValue={element.balance}
-                                            ref={this.setNewBalance}
-                                        /></TD>
-                                </Fragment>
-                            )
-                        }
-                        <TD className={status}>{status}</TD>
-                        {
-                            this.state.idClientToEdit !== element.id ?
-                                (<TD>
-                                    <TableButton data-edit-type="edit">Редактировать</TableButton>
-                                </TD>) :
-                                (<TD>
-                                    <TableButton
-                                        data-edit-type="save">
-                                        Сохранить
-                                    </TableButton>
-                                </TD>)
-                        }
-
-                        <TD><TableButton data-edit-type="delete">Удалить</TableButton></TD>
-                    </TrWrapper>
-                )
-            }
-        )
+        return this.props.filteredCompany.map((element)=>{
+            return <Client
+                key={element.id}
+                element={element}
+                isEditable = {this.state.idClientToEdit === element.id}
+            />
+        })
     };
 
     render() {
@@ -178,7 +89,7 @@ const TableWrapper = styled.table`
 const THeadWrapper = styled.thead`
     background-color: ${Variables.colors.light_pink};   
 `;
-const TrWrapper = styled.tr``;
+export const TrWrapper = styled.tr``;
 const TBody = styled.tbody`
     text-align: center;      
    
@@ -188,7 +99,7 @@ const TH = styled.th`
     padding: 20px;  
 `;
 
-const TD = styled.td`
+export const TD = styled.td`
     padding: 20px;   
     height: 100%;
     border-bottom: solid 1px ${Variables.colors.dark_pink};
@@ -202,7 +113,7 @@ const TD = styled.td`
     }     
 `;
 
-const TableButton = styled(Button)`
+export const TableButton = styled(Button)`
      border: 1px solid ${Variables.colors.grey};
      background-color: ${Variables.colors.light_grey};  
 `;
