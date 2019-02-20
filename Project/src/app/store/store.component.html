@@ -1,0 +1,67 @@
+<div class="store__background">
+  <div class="store__wrapper">
+    <div class="store__left-side"></div>
+    <div class="store__right-side"></div>
+    <store-header></store-header>
+
+    <div class="store-categories">
+      <div
+        class="store-categories__current">{{selectedCategory||'Все продукты'}}
+      </div>
+      <div class="store-categories__menu">
+        <button
+          (click)="changeCategory()"
+          class="store-categories__button"
+          [class.active]="!selectedCategory"
+        >Все продукты
+        </button>
+        <button
+          *ngFor="let cat of categories"
+          [class.active]="cat===selectedCategory"
+          (click)="changeCategory(cat)"
+          class="store-categories__button"
+        >{{cat}}
+        </button>
+      </div>
+    </div>
+
+    <div class="store-list">
+      <div class="store-list__item" *ngFor="let product of products">
+        <img class="store-list__image" [src]="product.src">
+        <h4 class="store-list__title">{{product.name}}</h4>
+        <div class="store-list__price">
+          <span class="store-list__sum">{{product.price}} руб</span>
+          <span class="store-list__unit">/{{product.unit}}</span>
+        </div>
+        <div class="store-list__background">
+          <button class="store-list__button"><i class="fa fa-shopping-bag"></i></button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="options-wrapper">
+      <select class="select"
+              [value]="productsPerPage"
+              (change)="changePageSize($event.target.value)">
+        <option value="3">3 per Page</option>
+        <option value="4">4 per Page</option>
+        <option value="6">6 per Page</option>
+        <option value="8">8 per Page</option>
+      </select>
+
+
+      <div class="btn-group">
+        <button *ngFor="let page of pageNumbers"
+                (click)="changePage(page)"
+                class="button"
+                [class.active]="page===selectedPage">
+          {{page}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--строковай интеполяция {{}} т.е. результат вычисляется и всталяется в элемент-->

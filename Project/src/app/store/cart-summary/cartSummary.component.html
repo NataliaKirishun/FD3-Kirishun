@@ -1,0 +1,6 @@
+<div class="cart-summary">
+  <button class="cart-summary__btn" [disabled]="cart.itemCount === 0">
+    <i class="fa fa-shopping-cart"></i>
+  </button>
+  <div *ngIf="cart.itemCount>0" class="cart-summary__count">{{cart.itemCount}}</div>
+</div>

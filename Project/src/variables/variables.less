@@ -1,0 +1,25 @@
+@blue: #6AAEF0;
+@light_blue: #EEF2F9;
+@dark_gray: #363636;
+@silver_gray: #696969;
+@gray: #A3A4A6;
+@light_gray: #F2F2F2;
+@white: #fff;
+
+@main_font: Roboto, Arial, sans-serif;
+
+.angle(@top; @right; @width; @height; @thickness; @color; @angel ) {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: @top;
+    right: @right;
+    width: @width;
+    height: @height;
+    border-right: @thickness solid @color;
+    border-bottom: @thickness solid @color;
+    transform: rotate(@angel);
+  }
+}

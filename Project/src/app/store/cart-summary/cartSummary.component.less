@@ -1,0 +1,26 @@
+@import "../../../variables/variables";
+
+.cart-summary {
+  position: relative;
+
+  &__btn {
+    font-size: 20px;
+    background-color: transparent;
+    border: 0;
+  }
+
+  &__count {
+    position: absolute;
+    top: 30%;
+    right: -10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 10px;
+    background-color: @blue;
+    text-align: center;
+    color: @white;
+    border: 2px solid @white;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}

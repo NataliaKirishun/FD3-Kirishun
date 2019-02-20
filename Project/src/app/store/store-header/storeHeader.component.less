@@ -1,0 +1,49 @@
+@import "../../../variables/variables";
+
+.header-wrapper {
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.store-menu {
+  display: flex;
+  list-style: none;
+  font-family: @main_font;
+
+  &__item {
+    margin: 0 10px;
+  }
+}
+
+.angle-down {
+  padding-right: 15px;
+  .angle(8px; 2px; 5px; 5px; 1px; @dark_gray; 45deg);
+}
+
+.store-logo {
+  position: relative;
+
+  &__text {
+    font-family: @main_font;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &__button {
+    position: absolute;
+    top: 67%;
+    right: 1%;
+    color: @white;
+    display: block;
+    background-color: @blue;
+    border: 2px solid @white;
+    font-size: 14px;
+    border-radius: 14px;
+    padding: 0 6px;
+    text-transform: none;
+  }
+}
