@@ -28,13 +28,18 @@
     <div class="store-list">
       <div class="store-list__item" *ngFor="let product of products">
         <img class="store-list__image" [src]="product.src">
-        <h4 class="store-list__title">{{product.name}}</h4>
-        <div class="store-list__price">
-          <span class="store-list__sum">{{product.price}} руб</span>
-          <span class="store-list__unit">/{{product.unit}}</span>
+        <div class="store-list__information">
+          <h4 class="store-list__title">{{product.name}}</h4>
+          <div class="store-list__price">
+            <span class="store-list__sum">{{product.price}} руб</span>
+            <span class="store-list__unit">/{{product.unit}}</span>
+          </div>
         </div>
-        <div class="store-list__background">
-          <button class="store-list__button"><i class="fa fa-shopping-bag"></i></button>
+        <div class="store-list__button-background">
+          <button
+            class="store-list__button"
+            (click)="addProductToCart(product)">
+            <i class="fa fa-shopping-bag"></i></button>
         </div>
       </div>
     </div>
