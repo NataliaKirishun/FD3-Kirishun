@@ -1,0 +1,226 @@
+@import "../../variables/variables";
+
+.store {
+
+  &__background {
+    width: 100%;
+    height: auto;
+    position: relative;
+    background-color: @light_blue;
+  }
+
+  &__wrapper {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__left-side, &__right-side {
+    position: absolute;
+    top: 80px;
+    width: 15%;
+    height: 90%;
+  }
+
+  &__left-side {
+    left: -10%;
+    background: url("../../images/vegetables.png") no-repeat top right, 20px 0;
+    background-size: 110%;
+
+  }
+
+  &__right-side {
+    right: -12%;
+    background: url("../../images/cart.png") no-repeat top right, 20px 30px;
+    background-size: 100%;
+  }
+
+  &__menu {
+    display: flex;
+  }
+}
+
+.store-categories {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 90px;
+  font-family: @main_font;
+  font-size: 20px;
+  font-weight: 700;
+  color: @dark_gray;
+
+  &__button {
+    padding: 10px;
+    margin: 0 10px;
+    outline: none;
+    background-color: @white;
+    border: 0;
+    border-radius: 16px;
+    color: @gray;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__button.active {
+    background-color: @blue;
+    color: @white;
+  }
+
+}
+
+.store-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 30px 90px;
+  font-family: @main_font;
+
+  &__item {
+    background-color: @white;
+    border-radius: 14px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    margin-bottom: 50px;
+  }
+
+  &__image {
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+    filter: drop-shadow(5px 5px 5px #222);
+  }
+
+  &__information {
+    margin: 20px 0 40px 0;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 14px;
+    color: @dark_gray;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  &__price {
+    font-size: 12px;
+  }
+
+  &__sum {
+    color: @blue;
+  }
+
+  &__unit {
+    color: @gray;
+  }
+
+  &__button-background {
+    position: absolute;
+    bottom: -20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: @white;
+    z-index: 0;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 10px;
+    border: 2px solid @light_gray;
+    background-color: transparent;
+    outline: none;
+
+    &:active {
+      background-color: @blue;
+      .fa-shopping-bag {
+        color: @white;
+      }
+    }
+  }
+
+  .fa-shopping-bag {
+    color: @blue;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+}
+
+.store-products {
+  width: 75%;
+  padding: 20px 0;
+}
+
+.item {
+  border: 1px solid black;
+  margin: 20px 0;
+
+  &__header {
+    background-color: #B9BED3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+  }
+
+  &__price {
+    background-color: #624A5C;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: white;
+  }
+
+  &__description {
+    font-size: 18px;
+    padding: 20px;
+
+  }
+}
+
+.options-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.select {
+  height: 28px;
+  border-radius: 2px;
+  border: 1px solid #E9B1BD;
+  outline: none;
+}
+
+.btn-group {
+
+}
+
+.button {
+  padding: 14px;
+  outline: none;
+}
+
+.brick {
+  width: 30%;
+  height: 80px;
+  background-color: #004085;
+  margin-bottom: 10px;
+
+  &:nth-child(4n+1) {
+    height: 200px;
+    background-color: #f60000;
+  }
+}
+
+

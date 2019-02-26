@@ -7,12 +7,15 @@ import {ModelModule} from "../model/model.module";
 import {StoreComponent} from "./store.component";
 import {CartSummaryComponents} from "./cart-summary/cartSummary.components"
 import {StoreHeaderComponent} from "./store-header/storeHeader.component"
+import {CartDetailComponent} from "./cart-detail/cartDetail.component"
+import {CheckoutComponent} from "./checkout/checkout.component"
+import {RouterModule} from "@angular/router"
 
 
 @NgModule({
-  imports:[ModelModule,BrowserModule, MasonryModule],
-  declarations: [StoreComponent, CartSummaryComponents, StoreHeaderComponent],
-  exports:[StoreComponent]
+  imports:[ModelModule,BrowserModule, RouterModule],
+  declarations: [StoreComponent, CartSummaryComponents, StoreHeaderComponent, CartDetailComponent, CheckoutComponent],
+  exports:[StoreComponent, CartDetailComponent, CheckoutComponent]
 })
 export class StoreModule{}
 // @NgModel настраивает модуль
