@@ -1,7 +1,13 @@
 import {Component} from "@angular/core";
 
 @Component({
-  template:'<div><h3>Checkout component</h3></div>'
+  templateUrl:'./checkout.component.html',
+  styleUrls: ['./checkout.component.less']
 })
 
-export class CheckoutComponent{}
+export class CheckoutComponent{
+  orderSent: boolean = false;
+
+  
+
+}

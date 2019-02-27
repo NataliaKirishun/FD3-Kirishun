@@ -36,11 +36,13 @@ export class StoreComponent {
   }
 
   changePage(newPage:number):void {
+      console.log(newPage);
     this.selectedPage = newPage;
   }
 
   changePageSize (newSize: number):void {
-    this.productsPerPage=newSize;
+    console.log(newSize);
+    this.productsPerPage=Number(newSize);
     this.selectedPage = 1;
   }
 
