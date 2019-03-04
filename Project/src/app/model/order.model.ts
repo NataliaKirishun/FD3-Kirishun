@@ -7,8 +7,8 @@ export class Order {
   public name: string;
   public address: string;
   public city: string;
-  public state: string;
-  public zip: string;
+  public region: string;
+  public postcode: string;
   public country: string;
   public shipped: boolean =false;
 
@@ -21,8 +21,8 @@ export class Order {
     this.name = null;
     this.address = null;
     this.city = null;
-    this.state = null;
-    this.zip = null;
+    this.region = null;
+    this.postcode = null;
     this.country = null;
     this.shipped = null;
     this.cart.clear();

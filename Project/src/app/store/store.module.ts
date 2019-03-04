@@ -1,8 +1,6 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
-import { MasonryModule } from 'angular2-masonry';
-
 import {ModelModule} from "../model/model.module";
 import {StoreComponent} from "./store.component";
 import {CartSummaryComponents} from "./cart-summary/cartSummary.components"
@@ -13,7 +11,7 @@ import {RouterModule} from "@angular/router"
 
 
 @NgModule({
-  imports:[ModelModule,BrowserModule, RouterModule],
+  imports:[ModelModule,BrowserModule, RouterModule,FormsModule],
   declarations: [StoreComponent, CartSummaryComponents, StoreHeaderComponent, CartDetailComponent, CheckoutComponent],
   exports:[StoreComponent, CartDetailComponent, CheckoutComponent]
 })

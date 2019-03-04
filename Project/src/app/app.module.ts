@@ -9,6 +9,8 @@ import {CartDetailComponent} from "./store/cart-detail/cartDetail.component";
 import {RouterModule} from "@angular/router";
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent

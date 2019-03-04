@@ -1,0 +1,116 @@
+<div class="checkout">
+  <div *ngIf="orderSent" class="checkout__done">
+    <h2>Спасибо!</h2>
+    <div>Ваш заказ принят.</div>
+    <div>Мы отправим Вам товар как только заказ будет сформирован.</div>
+    <button class="checkout__back">Вернуться в магазин.</button>
+  </div>
+  <form
+    *ngIf="!orderSent"
+    #form="ngForm"
+    (ngSubmit)="submitOrder(form)"
+    class="checkout__form"
+    novalidate>
+    <h3 class="checkout__title">Введите информацию о себе:</h3>
+    <div class="checkout__form-group">
+      <label class="checkout__label">Имя</label>
+      <input
+        class="checkout__form-control"
+        #name="ngModel"
+        name="name"
+        [(ngModel)]="order.name"
+        required>
+      <span
+        class="checkout__warning"
+        *ngIf="submitted && name.invalid; else unset">Введите Ваше имя</span>
+      <ng-template #unset>
+        <span class="checkout__empty"></span>
+      </ng-template>
+    </div>
+    <div class="checkout__form-group">
+      <label class="checkout__label">Адрес</label>
+      <input
+        class="checkout__form-control"
+        #address="ngModel"
+        name="address"
+        [(ngModel)]="order.address"
+        required>
+      <span
+        class="checkout__warning"
+        *ngIf="submitted && address.invalid; else unset">Введите Ваш адрес</span>
+      <ng-template #unset>
+        <span class="checkout__empty"></span>
+      </ng-template>
+    </div>
+    <div class="checkout__form-group">
+      <label class="checkout__label">Город</label>
+      <input
+        class="checkout__form-control"
+        #city="ngModel"
+        name="city"
+        [(ngModel)]="order.city"
+        required>
+      <span
+        class="checkout__warning"
+        *ngIf="submitted && city.invalid; else unset">Введите Ваш город</span>
+      <ng-template #unset>
+        <span class="checkout__empty"></span>
+      </ng-template>
+    </div>
+    <div class="checkout__form-group">
+      <label class="checkout__label">Город</label>
+      <input
+        class="checkout__form-control"
+        #region="ngModel"
+        name="region"
+        [(ngModel)]="order.region"
+        required>
+      <span
+        class="checkout__warning"
+        *ngIf="submitted && region.invalid; else unset">Введите область</span>
+      <ng-template #unset>
+        <span class="checkout__empty"></span>
+      </ng-template>
+    </div>
+    <div class="checkout__form-group">
+      <label class="checkout__label">Индекс</label>
+      <input
+        class="checkout__form-control"
+        #postcode="ngModel"
+        name="postcode"
+        [(ngModel)]="order.postcode"
+        required>
+      <span
+        class="checkout__warning"
+        *ngIf="submitted && postcode.invalid; else unset">Введите Ваш индекс</span>
+      <ng-template #unset>
+        <span class="checkout__empty"></span>
+      </ng-template>
+    </div>
+    <div class="checkout__form-group">
+      <label class="checkout__label">Страна</label>
+      <input
+        class="checkout__form-control"
+        #country="ngModel"
+        name="country"
+        [(ngModel)]="order.country"
+        required>
+      <span
+        class="checkout__warning"
+        *ngIf="submitted && country.invalid; else unset">Введите Вашу страну</span>
+      <ng-template #unset>
+        <span class="checkout__empty"></span>
+      </ng-template>
+    </div>
+    <div class="checkout__btn-group">
+      <button
+        class="checkout__back"
+        routerLink="/cart">Обратно
+      </button>
+      <button
+        class="checkout__finish"
+        type="submit">Завершить
+      </button>
+    </div>
+  </form>
+</div>
